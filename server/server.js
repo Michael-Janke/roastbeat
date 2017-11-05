@@ -14,7 +14,7 @@ wss.on('connection', function connection(ws) {
 	
 	    switch(messageObject.command) {
 	    	case "CREATE_GAME": createGame(ws); break;
-	    	case "JOIN_GAME": joinGame(ws); break;
+	    	case "JOIN_GAME": joinGame(ws, messageObject.name, messageObject.pin); break;
 	    	case "START_GAME": startGame(ws); break;
 	    	case "STOP_GAME": stopGame(ws); break;
 	    	case "LEAVE_GAME": leaveGame(ws); break;
@@ -39,5 +39,33 @@ function createGame(client) {
     }));
   	games[game.pin] = game;
   	console.log("your pin is:" + game.pin);
+}
+
+/*
+{"command":"CREATE_GAME"}
+{"command":"JOIN_GAME", "pin": 0, "name": "Michael"}
+*/
+function joinGame(client, name, pin) {
+	let game = games[pin];
+	let player = new Player(name, game, client);
+	game.players.push(player);
+
+	broadcastGameState(game);
+
+  	console.log(name + " joined " + pin);
+}
+
+function broadcastGameState(game) {
+	game.players.forEach(
+		(player) => player.socket.send(JSON.stringify({
+			"command" : "READ_GAME_STATE",
+			"player" : game.players.map((player) => {return 
+				{"name": player.name, 
+				"score": player.score};
+			}),
+			"state" : game.state,
+			"question" : game.question,
+		}))
+	)
 }
 
