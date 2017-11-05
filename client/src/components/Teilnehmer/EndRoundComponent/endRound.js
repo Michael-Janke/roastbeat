@@ -10,6 +10,16 @@ class FeedbackComponent extends Component {
     timer: 3,
   };
 
+  componentDidMount() {
+    setInterval(() => {
+      if (this.state.timer > 0) {
+        this.setState({
+          timer: (this.state.timer - 1),
+        });
+      }
+    }, 1000);
+  }
+
   render() {
     const state = this.state;
 
