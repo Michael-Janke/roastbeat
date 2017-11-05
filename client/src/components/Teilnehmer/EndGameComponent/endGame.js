@@ -13,22 +13,24 @@ class FinalScoreComponent extends Component {
   };
 
   render() {
+    
+    function onEndClicked(e){
+      window.location.replace('/');
+    }
 
     const state = this.state;
 
     return (
-    <div>
-      Scoreboard
-      <List>
-
-        Winner
+    <div className="main-content">
+      <h2>ROAST QUIZ <br/>SCORES</h2>
+      <ul className="scores">
         {state.participants.map((participant) => (
-          <ListItem>
-            {participant.name} {participant.score}
-          </ListItem>
+          <li className="scoresItem"><span className="score">{participant.score} <span>pts</span></span><span className="name">{participant.name}</span>
+          </li>
         ))}
 
-      </List>
+      </ul>
+      <div className="btn_big"><div className="btn" onClick={onEndClicked.bind(this)}>close quiz</div></div>
     </div>);
 
   }
