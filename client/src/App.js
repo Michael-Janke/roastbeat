@@ -7,20 +7,9 @@ import FirstScreen from "./components/FirstScreen/firstScreen";
 
 class App extends Component {
 
-
   constructor() {
     super();
   }
-
-  state = {
-    name: '',
-    accessCode: '',
-    attendants: [],
-    songTitle: '',
-    playing: false,
-    pending: false,
-    done: false,
-  };
 
   render() {
 

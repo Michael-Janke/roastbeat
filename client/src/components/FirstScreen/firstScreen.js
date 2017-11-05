@@ -27,7 +27,7 @@ class FirstScreen extends Component {
     const state = this.state;
 
       return (
-        <div>
+        <div className="App main-context">
           <TextField
             hintText={"Your Name"}
             errorText="This field is required"
