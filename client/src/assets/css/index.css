@@ -72,3 +72,12 @@ body:before {
   clear: both;
   padding-bottom: 16px;
 }
+
+.choiceGroup {
+  margin: 2% 35% 2% 35%;
+}
+
+.choiceRadioGroup {
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
