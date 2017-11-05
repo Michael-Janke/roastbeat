@@ -17,9 +17,9 @@ class FirstScreenComponent extends Component {
         case "READ_PIN": props.addPin(data.pin); break;
         case "READ_GAME_STATE": props.addGameState(data); break;
         case "READ_ANSWER": props.addAnswer(data); break;
-        default: ;
+        default:
       }
-    }
+    };
     props.addWS(ws);
   }
 

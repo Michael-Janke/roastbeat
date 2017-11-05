@@ -5,6 +5,7 @@ import Add from 'material-ui-icons/Add';
 import CheckboxOutlineBlank from 'material-ui-icons/CheckBoxOutlineBlank';
 import Slider from 'material-ui/Slider';
 import { connect } from 'react-redux'
+import {setGameState} from "../../../actions/index";
 
 class PendingComponent extends Component {
 
@@ -31,10 +32,10 @@ class PendingComponent extends Component {
         </div>
         <List className="participants_list" subheader>
           <span className="label">Waiting for players</span>
-          {state.players.map((players) => (
-            <ListItem> {players.name} </ListItem>
-            ))}
-          <div class="btn btn_joinThisQuiz"><span className="icon"><Add/></span>join this quiz</div>
+          {this.props.players && this.props.players.map((player) => (
+            <ListItem> {player.name} </ListItem>
+            ), 0)}
+          <div className="btn btn_joinThisQuiz"><span className="icon"><Add/></span>join this quiz</div>
         </List>
         Currently you have {this.state.songs} selected:
         <Slider
@@ -54,11 +55,13 @@ const mapStateToProps = state => {
   return {
     ws: state ? state.ws : null,
     pin: state ? state.pin: null,
+    players: state ? state.players: [],
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+  };
 };
 
 const Pending = connect(mapStateToProps, mapDispatchToProps)(PendingComponent);
