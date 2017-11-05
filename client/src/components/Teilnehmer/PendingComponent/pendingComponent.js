@@ -14,6 +14,11 @@ class PendingComponent extends Component {
     songs: 20,
   };
 
+  onStartClicked() {
+    console.log(JSON.stringify({command: 'UPDATE_GAME', state: 'QUESTION', question: {song: 'test'}}));
+    this.props.ws.send(JSON.stringify({command: 'UPDATE_GAME', pin: this.props.pin, state: 'QUESTION', question: {song: 'test'}}));
+  }
+
   handleSlider = (event, value) => {
     this.setState({songs: value});
   };
@@ -45,10 +50,15 @@ class PendingComponent extends Component {
           value={this.state.songs}
           onChange={this.handleSlider}
         />
-        <div className="btn_bigFilled"><div className="btn">start quiz</div></div>
+        <div className="btn_bigFilled" onClick={this.onStartClicked.bind(this)}>
+          <div className="btn" >
+            start quiz
+          </div>
+        </div>
       </div>
     );
   }
+
 }
 
 const mapStateToProps = state => {

@@ -48,7 +48,7 @@ class GameComponent extends Component {
         {state.timer > 0 ?
           <div className="choiceGroup">
             <h2>
-              {state.question}
+              {JSON.stringify(this.props)}
             </h2>
             <RadioButtonGroup className="choiceRadioGroup" name="choices">
 
@@ -79,6 +79,7 @@ const mapStateToProps = state => {
   return {
     ws: state ? state.ws : null,
     pin: state ? state.pin: null,
+    question: state ? state.question: null,
   };
 };
 
