@@ -4,7 +4,8 @@ import Checkbox from 'material-ui-icons/CheckBox';
 import CheckboxOutlineBlank from 'material-ui-icons/CheckBoxOutlineBlank';
 import RaisedButton from 'material-ui/RaisedButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import Close from 'material-ui-icons/Close';
 
 class GameComponent extends Component {
 
@@ -41,6 +42,9 @@ class GameComponent extends Component {
 
     return (
       <div className="main-content">
+        <div className="appNavigation">
+          <div className="btn btn_closeQuiz"><span className="icon"><Close/></span>close quiz</div>
+        </div> 
         {state.timer > 0 ?
           <div className="choiceGroup">
             <h2>

@@ -1,12 +1,12 @@
 html {
-  min-height: 100%;
+  /*min-height: 100%;*/
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  min-height: 100%;
+  /*min-height: 100%;*/
   color: #fff;
   background: -moz-linear-gradient(45deg, rgba(68,68,68,1) 0%, rgba(166,158,178,1) 100%);
   background: -webkit-linear-gradient(45deg, rgba(68,68,68,1) 0%,rgba(166,158,178,1) 100%);
@@ -15,30 +15,24 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-body:before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
+#root{
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 16vh;
+  min-height: 100vh;
   background: -moz-linear-gradient(-45deg, rgba(187,109,120,0) 0%, rgba(187,109,120,1) 100%);
   background: -webkit-linear-gradient(-45deg, rgba(187,109,120,0) 0%,rgba(187,109,120,1) 100%);
   background: linear-gradient(-45deg, rgba(187,109,120,0) 0%,rgba(187,109,120,1) 100%);
-  z-index: -1;
 }
 
 .main-content {
-  /*border-radius: 10px;*/
-  /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
   display: block;
   margin: auto auto;
-  margin-top: 10%;
   padding: 20px 20px 20px 20px;
   width: 500px;
   height: 700px;
-  max-width: 512px;
+  max-width: 100%;
+  box-sizing: border-box;
   z-index: 1;
 }
 
@@ -49,6 +43,10 @@ body:before {
 .joinButton {
   margin: 1%;
   margin-bottom: 2%;
+}
+
+.appNavigation {
+  margin-bottom: 20px;
 }
 
 .inviteCode {

@@ -70,28 +70,20 @@ class FirstScreenComponent extends Component {
 
       return (
         <div className="App main-content">
+          <div className="btn_bigFilled"><div className="btn" onClick={onStartClicked.bind(this)}>host quiz</div></div>
+          <div className="btn_big"><div className="btn" onClick={onJoinClicked.bind(this)}>join quiz</div></div>
           <TextField
             hintText={"Your Name"}
             errorText="This field is required"
             value={state.name}
             onChange={this.handleChange}
-          /><br />
-          <div className="startButton">
-            <RaisedButton onClick={onStartClicked.bind(this)}>
-              Host Game
-            </RaisedButton>
-          </div>
+          />
           <TextField
             hintText={this.props.pin != null? "Share Access Code: " + this.props.pin : "Enter game code"}
             errorText="This field is required"
             value={state.accessCode}
             onChange={this.handleAccessCode}
-          /><br />
-          <div className="joinButton">
-            <RaisedButton onClick={onJoinClicked.bind(this)}>
-              Join
-            </RaisedButton>
-          </div>
+          />
          </div>
       );
     }
