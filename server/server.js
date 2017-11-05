@@ -81,6 +81,7 @@ function leaveGame(client) {
   	console.log(name + " left the game");
 }
 
+//{"command":"ANSWER", "question": 0, "answer": 0}
 function answer(client, question, answer) {
 	let cgame = undefined;
 	let cplayer = undefined;
@@ -103,7 +104,7 @@ function answer(client, question, answer) {
 
 	broadcastGameState(cgame);
 
-  	console.log(name + " left the game");
+  	console.log(cplayer.name + " left the game");
 }
 
 /*
