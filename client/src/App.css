@@ -106,3 +106,13 @@ h2 {
 .scores .scoresItem:first-child{
   background: rgba(255,255,255,0.2);
 }
+
+.timer {
+  font-size: 48px;
+  font-weight: 600px;
+  width: 154px;
+  display: block;
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+}

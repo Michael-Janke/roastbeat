@@ -24,16 +24,17 @@ class GameComponent extends Component {
       'Obama'
     ],
     timer: 300,
+    completed: 0
   };
 
   componentDidMount() {
     setInterval(() => {
       if (this.state.timer > 0) {
         this.setState({
-          timer: (this.state.timer - 1),
+          timer: (this.state.timer - 0.01),
         });
       }
-    }, 1000);
+    }, 10);
   }
 
 
@@ -47,9 +48,10 @@ class GameComponent extends Component {
         </div> 
         {state.timer > 0 ?
           <div className="choiceGroup">
-            <h2>
+            <span className="timer">{Math.floor(state.timer * 100 ) / 100}</span>
+            <h3>
               {state.question}
-            </h2>
+            </h3>
             <RadioButtonGroup className="choiceRadioGroup" name="choices">
 
               {state.choices.map((choice) => (
@@ -64,9 +66,6 @@ class GameComponent extends Component {
           </div>
           : null
         }
-        <div>
-          {state.timer} seconds left
-        </div>
 
       </div>
 
