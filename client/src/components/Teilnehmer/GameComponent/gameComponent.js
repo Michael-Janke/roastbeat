@@ -42,7 +42,6 @@ class GameComponent extends Component {
   }
   
 
-
   render() {
     const state = this.state;
 
@@ -51,7 +50,6 @@ class GameComponent extends Component {
         <div className="appNavigation">
           <div className="btn btn_closeQuiz"><span className="icon"><Close/></span>close quiz</div>
         </div> 
-        {state.timer > 0 ?
           <div className="choiceGroup">
             <div className="progress">
               <span className="timer">{state.timer}</span>
@@ -80,11 +78,8 @@ class GameComponent extends Component {
             </RadioButtonGroup>
             <div className="btn_bigFilled"><div className="btn">Confirm</div></div>
           </div>
-          : null
-        }
 
       </div>
-
     );
   }
 }
