@@ -47,16 +47,10 @@ class GameComponent extends Component {
         </div> 
         {state.timer > 0 ?
           <div className="choiceGroup">
-<<<<<<< HEAD
             <span className="timer">{Math.floor(state.timer * 100 ) / 100}</span>
             <h3>
               {state.question}
             </h3>
-=======
-            <h2>
-              {JSON.stringify(this.props)}
-            </h2>
->>>>>>> b08282a0d1ad1b43d210df1601f6b497d1a8f0b6
             <RadioButtonGroup className="choiceRadioGroup" name="choices">
 
               {state.choices.map((choice) => (
