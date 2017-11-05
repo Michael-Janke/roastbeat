@@ -15,8 +15,8 @@ wss.on('connection', function connection(ws) {
 	    switch(messageObject.command) {
 	    	case "CREATE_GAME": createGame(ws); break;
 	    	case "JOIN_GAME": joinGame(ws, messageObject.name, messageObject.pin); break;
-	    	case "START_GAME": startGame(ws); break;
-	    	case "STOP_GAME": stopGame(ws); break;
+	    	case "ANSWER": answer(ws, messageObject.question, messageObject.answer); break;
+	    	case "UPDATE_GAME": updateGame(ws, messageObject.state, message.question); break;
 	    	case "LEAVE_GAME": leaveGame(ws); break;
 	    	default:
 	    		throw(messageObject.command + " command not defined");
@@ -32,7 +32,7 @@ wss.on('connection', function connection(ws) {
 
 //{"command":"CREATE_GAME"}
 function createGame(client) {
-	let game = new Game();
+	let game = new Game(client);
     client.send(JSON.stringify({
     	command: "READ_PIN",
     	pin: game.pin
@@ -48,6 +48,9 @@ function createGame(client) {
 function joinGame(client, name, pin) {
 	let game = games[pin];
 	let player = new Player(name, game, client);
+	if(game.state != "LOBBY") {
+		throw ("Game is already started");
+	}
 	game.players.push(player);
 
 	broadcastGameState(game);
@@ -55,14 +58,78 @@ function joinGame(client, name, pin) {
   	console.log(name + " joined " + pin);
 }
 
+/*
+{"command":"CREATE_GAME"}
+{"command":"JOIN_GAME", "pin": 0, "name": "Michael"}
+{"command":"LEAVE_GAME"}
+*/
+function leaveGame(client) {
+	let gameWithPlayer = undefined;
+	let name = "";
+	Object.values(games).forEach((game) => {
+		game.players.forEach((player, index) => {
+			if(player.socket == client) {
+				name = player.name;
+				game.players.splice(index,1);
+				gameWithPlayer = game;
+			}
+		});
+	});
+
+	broadcastGameState(gameWithPlayer);
+
+  	console.log(name + " left the game");
+}
+
+function answer(client, question, answer) {
+	let cgame = undefined;
+	let cplayer = undefined;
+	Object.values(games).forEach((game) => {
+		game.players.forEach((player, index) => {
+			if(player.socket == client) {
+				cplayer = player;
+				cgame = game;
+			}
+		});
+	});
+
+	cgame.creator.send(JSON.stringify({
+		command: "READ_ANSWER",
+		question: question,
+		answer: answer,
+		player: cplayer.name
+	}));
+	cgame.state = "QUESTION_ANSWERED";
+
+	broadcastGameState(cgame);
+
+  	console.log(name + " left the game");
+}
+
+/*
+{"command":"CREATE_GAME"}
+{"command":"JOIN_GAME", "pin": 0, "name": "Michael"}
+{"command":"UPDATE_GAME", "state": "READY", "question": {"song":"test"}}
+*/
+
+function updateGame(client, state, question) {
+	let game = Object.values(games).filter((game) => game.creator == client)[0];
+	game.state = state || game.state;
+	game.question = question || game.question;
+
+	broadcastGameState(game);
+
+  	console.log(game.pin + " state changed");
+}
+
 function broadcastGameState(game) {
 	game.players.forEach(
 		(player) => player.socket.send(JSON.stringify({
 			"command" : "READ_GAME_STATE",
-			"player" : game.players.map((player) => {return 
-				{"name": player.name, 
-				"score": player.score};
-			}),
+			"player" : game.players.map((player) => ({
+				"name": player.name, 
+				"score": player.score
+			})),
 			"state" : game.state,
 			"question" : game.question,
 		}))

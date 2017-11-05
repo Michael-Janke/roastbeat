@@ -4,10 +4,11 @@ function generatePin() {
 }
 
 class Game {
-    constructor() {
+    constructor(client) {
         this.players = [];
         this.pin = generatePin();
         this.state = "LOBBY";
+        this.creator = client;
     }
 }
 
