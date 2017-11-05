@@ -6,8 +6,11 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import { connect } from 'react-redux';
 import Close from 'material-ui-icons/Close';
+import CircularProgress from 'material-ui/CircularProgress';
+
 
 class GameComponent extends Component {
+
 
   state = {
     participants: [
@@ -24,18 +27,20 @@ class GameComponent extends Component {
       'Obama'
     ],
     timer: 30,
+    completed: 0,
   };
 
   componentDidMount() {
     setInterval(() => {
       if (this.state.timer > 0) {
         this.setState({
-          timer: (this.state.timer - 0.01),
+          timer: (this.state.timer - 1),
+          completed: (this.state.timer - 30) * (100 - 0) / (0 - 30) + 0,
         });
       }
-    }, 10);
+    }, 1000);
   }
-
+  
 
   render() {
     const state = this.state;
@@ -45,9 +50,19 @@ class GameComponent extends Component {
         <div className="appNavigation">
           <div className="btn btn_closeQuiz"><span className="icon"><Close/></span>close quiz</div>
         </div> 
-        {state.timer > 0 ?
           <div className="choiceGroup">
-            <span className="timer">{Math.floor(state.timer * 100 ) / 100}</span>
+            <div className="progress">
+              <span className="timer">{state.timer}</span>
+              <div className="progressCircle">
+                <CircularProgress
+                  mode="determinate"
+                  value={this.state.completed}
+                  size={240}
+                  thickness={4}
+                  color="#fff"
+                />
+              </div>
+            </div>
             <h3>
               {state.question}
             </h3>
@@ -61,15 +76,10 @@ class GameComponent extends Component {
                 />
               ))}
             </RadioButtonGroup>
-            <RaisedButton>
-              Confirm
-            </RaisedButton>
+            <div className="btn_bigFilled"><div className="btn">Confirm</div></div>
           </div>
-          : null
-        }
 
       </div>
-
     );
   }
 }

@@ -107,12 +107,22 @@ h2 {
   background: rgba(255,255,255,0.2);
 }
 
-.timer {
-  font-size: 48px;
-  font-weight: 600px;
-  width: 154px;
-  display: block;
-  left: 50%;
+.progress {
+  height: 260px;
   position: relative;
-  transform: translateX(-50%);
+}
+.timer {
+  font-size: 64px;
+  font-weight: 600px;
+  display: block;
+  text-align: center;
+  top: 50%;
+  position: relative;
+  transform: translateY(-50%);
+}
+.progressCircle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }

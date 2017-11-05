@@ -22,13 +22,12 @@ class FinalScoreComponent extends Component {
 
     return (
     <div className="main-content">
-      <h2>ROAST QUIZ <br/>SCORES</h2>
+      <h2>ROAST QUIZ<br/>SCORES</h2>
       <ul className="scores">
         {state.participants.map((participant) => (
           <li className="scoresItem"><span className="score">{participant.score} <span>pts</span></span><span className="name">{participant.name}</span>
           </li>
         ))}
-
       </ul>
       <div className="btn_big"><div className="btn" onClick={onEndClicked.bind(this)}>close quiz</div></div>
     </div>);
