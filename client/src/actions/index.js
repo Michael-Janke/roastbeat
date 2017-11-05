@@ -11,3 +11,17 @@ export const setPin = pin => {
         pin
     }
 };
+
+export const setGameState = data => {
+    return {
+        type: "SET_GAME_STATE",
+        data
+    }
+};
+
+export const setAnswer = data => {
+    return {
+        type: "SET_ANSWER",
+        data
+    }
+};
