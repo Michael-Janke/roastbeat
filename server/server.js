@@ -11,7 +11,7 @@ wss.on('connection', function connection(ws) {
   	console.log(message);
     try {
     	let messageObject = JSON.parse(message);
-	
+
 	    switch(messageObject.command) {
 	    	case "CREATE_GAME": createGame(ws); break;
 	    	case "JOIN_GAME": joinGame(ws, messageObject.name, messageObject.pin); break;
@@ -46,11 +46,14 @@ function createGame(client) {
 {"command":"JOIN_GAME", "pin": 0, "name": "Michael"}
 */
 function joinGame(client, name, pin) {
+
 	let game = games[pin];
 	let player = new Player(name, game, client);
+    console.log(game.state);
 	if(game.state != "LOBBY") {
 		throw ("Game is already started");
 	}
+    console.log("asfdsf");
 	game.players.push(player);
 
 	broadcastGameState(game);
@@ -124,6 +127,7 @@ function updateGame(client, state, question) {
 }
 
 function broadcastGameState(game) {
+    console.log("asdfasdf");
 	game.players.forEach(
 		(player) => player.socket.send(JSON.stringify({
 			"command" : "READ_GAME_STATE",

@@ -20,7 +20,7 @@ class PendingComponent extends Component {
 
   render() {
     const state = this.state;
-
+    console.log(this.props);
     return (
       <div className="main-content">
         <div className="appNavigation">

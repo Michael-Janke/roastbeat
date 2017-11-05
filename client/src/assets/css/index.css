@@ -84,3 +84,7 @@ body {
 .choiceRadioGroup > div {
   padding: 16px;
 }
+
+hr {
+  color: black !important;
+}

@@ -13,16 +13,16 @@ const roastbeefReducer = (state = {}, action) => {
       case 'SET_GAME_STATE':
       return {
         ...state,
-        players: action.player,
-        state: action.state,
-        question: action.question
+        players: action.data.player,
+        state: action.data.state,
+        question: action.data.question
       }; break;
       case 'SET_ANSWER':
       return {
         ...state,
-        question: action.question,
-        answer: action.answer,
-        lastPlayer: action.player
+        question: action.data.question,
+        answer: action.data.answer,
+        lastPlayer: action.data.player
       }; break;
     default:
       return state

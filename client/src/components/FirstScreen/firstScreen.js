@@ -15,7 +15,7 @@ class FirstScreenComponent extends Component {
       let data = JSON.parse(e.data);
       switch (data.command) {
         case "READ_PIN": props.addPin(data.pin); break;
-        case "READ_GAME_STATE": props.addGameState(data); break;
+        case "READ_GAME_STATE": props.addGameState(data); console.log(data);break;
         case "READ_ANSWER": props.addAnswer(data); break;
         default:
       }
@@ -65,7 +65,7 @@ class FirstScreenComponent extends Component {
         readyToPlay: true,
       });
       this.props.ws.send(JSON.stringify({
-        command: "CREATE_GAME",
+        command: "JOIN_GAME",
         name: this.state.name,
         pin: this.state.accessCode
       }));
@@ -78,15 +78,17 @@ class FirstScreenComponent extends Component {
           <div className="btn_big"><div className="btn" onClick={onJoinClicked.bind(this)}>join quiz</div></div>
           <TextField
             hintText={"Your Name"}
-            errorText="This field is required"
             value={state.name}
             onChange={this.handleChange}
+            className="normalTextField"
+            style={{marginLeft: 100}}
           />
           <TextField
             hintText={this.props.pin != null? "Share Access Code: " + this.props.pin : "Enter game code"}
-            errorText="This field is required"
             value={state.accessCode}
             onChange={this.handleAccessCode}
+            className="normalTextField"
+            style={{marginLeft: 100}}
           />
          </div>
       );
