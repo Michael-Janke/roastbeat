@@ -17,7 +17,6 @@ class FirstScreen extends Component {
     });
   };
 
-
   state = {
     name: '',
     accessCode: '',

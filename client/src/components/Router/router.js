@@ -14,16 +14,14 @@ import FirstScreen from "../FirstScreen/firstScreen";
 const BasicRouter = () => (
   <Router>
     <div>
-      <ul>
+      <ul className="devNavi">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/pending">Pending</Link></li>
         <li><Link to="/action">Action</Link></li>
         <li><Link to="/feedback">Feedback</Link></li>
         <li><Link to="/finalScore">FinalScore</Link></li>
       </ul>
-
-      <hr/>
-
+      
       <Route exact path="/" component={FirstScreen}/>
       <Route path="/pending" component={PendingComponent}/>
       <Route path="/action" component={ActionComponent}/>
