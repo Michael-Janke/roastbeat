@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom'
 import { withStyles, MuiThemeProvider } from 'material-ui/styles';
-import BasicRouter from './components/Router/Router';
+import BasicRouter from './components/Router/router';
 import './App.css';
 import FirstScreen from "./components/FirstScreen/firstScreen";
 

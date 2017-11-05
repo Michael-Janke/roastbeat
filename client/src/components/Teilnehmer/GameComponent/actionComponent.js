@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-class ActionComponent extends Component {
+class GameComponent extends Component {
 
   render() {
     return "action";
   }
 }
 
-export default ActionComponent;
+export default GameComponent;
