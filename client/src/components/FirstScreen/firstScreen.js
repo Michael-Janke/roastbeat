@@ -48,7 +48,7 @@ class FirstScreen extends Component {
     }
 
       return (
-        <div className="App main-context">
+        <div className="App main-content">
           <TextField
             hintText={"Your Name"}
             errorText="This field is required"
