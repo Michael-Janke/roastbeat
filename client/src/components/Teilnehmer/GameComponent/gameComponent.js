@@ -23,7 +23,7 @@ class GameComponent extends Component {
       'Brian',
       'Obama'
     ],
-    timer: 30,
+    timer: 300,
   };
 
   componentDidMount() {
@@ -60,9 +60,7 @@ class GameComponent extends Component {
                 />
               ))}
             </RadioButtonGroup>
-            <RaisedButton>
-              Confirm
-            </RaisedButton>
+            <div className="btn_bigFilled"><div className="btn">confirm</div></div>
           </div>
           : null
         }

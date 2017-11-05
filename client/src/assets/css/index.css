@@ -35,7 +35,9 @@ body {
   box-sizing: border-box;
   z-index: 1;
 }
-
+.main-content.firstScreen {
+  padding-top: 280px;
+}
 .startButton {
   margin: 1%;
 }
@@ -71,11 +73,14 @@ body {
   padding-bottom: 16px;
 }
 
-.choiceGroup {
-  margin: 2% 35% 2% 35%;
-}
-
 .choiceRadioGroup {
   margin-top: 4%;
   margin-bottom: 4%;
+  background: rgba(255,255,255,0.8);
+  border-radius: 6px;
+  color: #fff;
+}
+
+.choiceRadioGroup > div {
+  padding: 16px;
 }

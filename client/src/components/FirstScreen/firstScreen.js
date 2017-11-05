@@ -73,7 +73,7 @@ class FirstScreenComponent extends Component {
     }
 
       return (
-        <div className="App main-content">
+        <div className="App main-content firstScreen">
           <div className="btn_bigFilled"><div className="btn" onClick={onStartClicked.bind(this)}>host quiz</div></div>
           <div className="btn_big"><div className="btn" onClick={onJoinClicked.bind(this)}>join quiz</div></div>
           <TextField

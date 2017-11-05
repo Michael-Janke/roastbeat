@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Close from 'material-ui-icons/Close';
 
 class FeedbackComponent extends Component {
 
@@ -7,7 +8,7 @@ class FeedbackComponent extends Component {
     answerCorrect: false,
     songTitle: '',
     score: 0,
-    timer: 3,
+    timer: 8,
   };
 
   componentDidMount() {
@@ -25,11 +26,14 @@ class FeedbackComponent extends Component {
 
     return (
       <div className="main-content">
-        Name: {state.name}
-        rightAnswer? {state.answerCorrect}
-        Song title {state.songTitle}
-        Score {state.score}
-        Timer for next step {state.timer}
+        <div className="appNavigation">
+          <div className="btn btn_closeQuiz"><span className="icon"><Close/></span>close quiz</div>
+        </div>
+        Name: {state.name}<br/>
+        rightAnswer? {state.answerCorrect}<br/>
+        Song title {state.songTitle}<br/>
+        Score {state.score}<br/>
+        Timer for next step {state.timer}<br/>
       </div>
     );
   }
