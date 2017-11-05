@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import { setWS } from '../../actions';
+import { setWS, setPin } from '../../actions';
 import { connect } from 'react-redux'
 
 
@@ -12,7 +12,11 @@ class FirstScreenComponent extends Component {
     // eslint-disable-next-line no-alert
     let ws = new WebSocket("ws://" + window.location.host + "/socket");
     ws.onmessage = function(e) {
-      console.log(e.data);
+      let data = JSON.parse(e.data);
+      switch (data.command) {
+        case "READ_PIN": props.addPin(data.pin); break;
+        default: ;
+      }
     }
     props.addWS(ws);
   }
@@ -57,6 +61,7 @@ class FirstScreenComponent extends Component {
       this.setState({
         readyToPlay: true,
       });
+      console.log(this.props.pin);
     }
 
       return (
@@ -90,7 +95,8 @@ class FirstScreenComponent extends Component {
 
 const mapStateToProps = state => {
   return {
-    ws: state ? state.ws : null
+    ws: state ? state.ws : null,
+    pin: state? state.pin: null
   }
 }
 
@@ -98,6 +104,9 @@ const mapDispatchToProps = dispatch => {
   return {
     addWS: ws => {
       dispatch(setWS(ws))
+    },
+    addPin: pin => {
+      dispatch(setPin(pin))
     }
   }
 }

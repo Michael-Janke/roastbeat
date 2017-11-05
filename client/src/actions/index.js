@@ -4,3 +4,10 @@ export const setWS = ws => {
         ws
     }
 }
+
+export const setPin = pin => {
+    return {
+        type: "SET_PIN",
+        pin
+    }
+}

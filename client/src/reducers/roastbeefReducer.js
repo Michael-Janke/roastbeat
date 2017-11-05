@@ -7,6 +7,13 @@ const roastbeefReducer = (state = {}, action) => {
             ws: action.ws
         
       }
+      case 'SET_PIN':
+      return {
+        ...state,
+        
+            pin: action.pin
+        
+      }
     default:
       return state
   }
