@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
 
 class FirstScreen extends Component {
@@ -8,9 +9,9 @@ class FirstScreen extends Component {
       const state = this.props.state;
         return (
           <div>
-            <div>
-              {state.name}
-            </div>
+            <TextField
+              hintText={state.name}
+            /><br />
             <div>
               <RaisedButton>
                 Start
