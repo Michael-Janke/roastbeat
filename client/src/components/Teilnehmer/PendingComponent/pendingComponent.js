@@ -42,7 +42,7 @@ class PendingComponent extends Component {
             ), 0)}
           <div className="btn btn_joinThisQuiz"><span className="icon"><Add/></span>join this quiz</div>
         </List>
-        Currently you have {this.state.songs} selected:
+        The quiz will play {this.state.songs} songs:
         <Slider
           min={10}
           max={30}
