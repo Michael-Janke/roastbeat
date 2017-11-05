@@ -37,7 +37,7 @@ class GameComponent extends Component {
     const state = this.state;
 
     return (
-      <div>
+      <div className="main-content">
         {state.timer > 0 ?
           <div>
             {state.question}

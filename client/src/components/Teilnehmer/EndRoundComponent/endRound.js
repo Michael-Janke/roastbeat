@@ -24,7 +24,7 @@ class FeedbackComponent extends Component {
     const state = this.state;
 
     return (
-      <div>
+      <div className="main-content">
         Name: {state.name}
         rightAnswer? {state.answerCorrect}
         Song title {state.songTitle}
