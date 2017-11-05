@@ -3,7 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { setWS, setPin, setAnswer, setGameState } from '../../actions';
 import { connect } from 'react-redux'
-
+import { withRouter } from 'react-router-dom';
 
 class FirstScreenComponent extends Component {
 
@@ -52,13 +52,19 @@ class FirstScreenComponent extends Component {
   render() {
     const state = this.state;
 
-    function onStartClicked() {
+    const Button = withRouter(({ history}) => (
+      <div className="btn" onClick={() => {
       this.setState({
-        isHost: true,
-        openGame: true,
+          isHost: true,
+          openGame: true,
       });
       this.props.ws.send('{"command":"CREATE_GAME"}');
-    }
+      history.push('/host')
+      }
+      } >
+        host quiz
+      </div>
+      ))
 
     function onJoinClicked() {
       this.setState({
@@ -73,8 +79,8 @@ class FirstScreenComponent extends Component {
     }
 
       return (
-        <div className="App main-content firstScreen">
-          <div className="btn_bigFilled"><div className="btn" onClick={onStartClicked.bind(this)}>host quiz</div></div>
+        <div className="App main-content">
+          <div className="btn_bigFilled"><Button/></div>
           <div className="btn_big"><div className="btn" onClick={onJoinClicked.bind(this)}>join quiz</div></div>
           <TextField
             hintText={"Your Name"}
