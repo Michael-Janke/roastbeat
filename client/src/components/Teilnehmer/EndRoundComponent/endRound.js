@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import Close from 'material-ui-icons/Close';
+import { connect } from 'react-redux'
 
 class EndRoundComponent extends Component {
 
@@ -9,7 +8,7 @@ class EndRoundComponent extends Component {
     answerCorrect: false,
     songTitle: '',
     score: 0,
-    timer: 8,
+    timer: 3,
   };
 
   componentDidMount() {
@@ -26,10 +25,7 @@ class EndRoundComponent extends Component {
     const state = this.state;
 
     return (
-      <div className="main-content">
-        <div className="appNavigation">
-          <div className="btn btn_closeQuiz"><span className="icon"><Close/></span>close quiz</div>
-        </div>
+      <div className="">
         <div>
           Name: {this.props.lastPlayer}
         </div>

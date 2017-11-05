@@ -23,7 +23,7 @@ class GameComponent extends Component {
       'Brian',
       'Obama'
     ],
-    timer: 300,
+    timer: 30,
   };
 
   componentDidMount() {
@@ -41,7 +41,7 @@ class GameComponent extends Component {
     const state = this.state;
 
     return (
-      <div className="main-content">
+      <div>
         <div className="appNavigation">
           <div className="btn btn_closeQuiz"><span className="icon"><Close/></span>close quiz</div>
         </div> 
@@ -60,7 +60,9 @@ class GameComponent extends Component {
                 />
               ))}
             </RadioButtonGroup>
-            <div className="btn_bigFilled"><div className="btn">confirm</div></div>
+            <RaisedButton>
+              Confirm
+            </RaisedButton>
           </div>
           : null
         }
