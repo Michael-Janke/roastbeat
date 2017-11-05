@@ -33,6 +33,7 @@ class FirstScreenComponent extends Component {
     });
   };
 
+
   state = {
     name: '',
     accessCode: '',
@@ -78,7 +79,7 @@ class FirstScreenComponent extends Component {
             </RaisedButton>
           </div>
           <TextField
-            hintText={"Enter game code"}
+            hintText={this.props.pin != null? "Share Access Code: " + this.props.pin : "Enter game code"}
             errorText="This field is required"
             value={state.accessCode}
             onChange={this.handleAccessCode}
@@ -98,7 +99,7 @@ const mapStateToProps = state => {
     ws: state ? state.ws : null,
     pin: state? state.pin: null
   }
-}
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -109,7 +110,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(setPin(pin))
     }
   }
-}
+};
 
 const FirstScreen = connect(mapStateToProps, mapDispatchToProps)(FirstScreenComponent)
 

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import List, {ListItem, ListItemIcon, ListItemText, ListSubheader} from 'material-ui/List';
 import Checkbox from 'material-ui-icons/CheckBox';
 import CheckboxOutlineBlank from 'material-ui-icons/CheckBoxOutlineBlank';
+import RaisedButton from 'material-ui/RaisedButton';
+import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 
 class GameComponent extends Component {
 
@@ -41,15 +43,21 @@ class GameComponent extends Component {
         {state.timer > 0 ?
           <div>
             {state.question}
+            <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
 
-            {state.choices.map((choice) => (
-              <div>{choice}</div>
-            ))}
+              {state.choices.map((choice) => (
+                <RadioButton
+                  value={choice}
+                  label={choice}
+                />
+              ))}
+            </RadioButtonGroup>
+            <RaisedButton>
+              Confirm
+            </RaisedButton>
           </div>
           : null
         }
-
-
         <div>
           {state.timer} seconds left
         </div>

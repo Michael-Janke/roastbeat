@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import List, { ListItem, ListItemIcon, ListItemText, ListSubheader } from 'material-ui/List';
-import Checkbox from 'material-ui-icons/CheckBox';
-import CheckboxOutlineBlank from 'material-ui-icons/CheckBoxOutlineBlank';
+
 class PendingComponent extends Component {
 
   state = {
