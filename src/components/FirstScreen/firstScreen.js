@@ -10,8 +10,9 @@ class FirstScreen extends Component {
         return (
           <div>
             <TextField
-              hintText={state.name}
+              hintText={"Your Name"}
               errorText="This field is required"
+              value={state.name}
             /><br />
             <div className="startButton">
               <RaisedButton>
