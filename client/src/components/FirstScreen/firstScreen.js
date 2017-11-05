@@ -5,27 +5,35 @@ import TextField from 'material-ui/TextField';
 
 class FirstScreen extends Component {
 
-    render() {
-      const state = this.props.state;
-        return (
-          <div>
-            <TextField
-              hintText={"Your Name"}
-              errorText="This field is required"
-              value={state.name}
-            /><br />
-            <div className="startButton">
-              <RaisedButton>
-                Start
-              </RaisedButton>
-            </div>
-            <div className="joinButton">
-              <RaisedButton>
-                Join
-              </RaisedButton>
-            </div>
-           </div>
-        );
+  handleChange = (event) => {
+    this.setState({
+      name: event.target.value,
+    });
+  };
+
+  state = this.props.state;
+
+  render() {
+      return (
+        <div>
+          <TextField
+            hintText={"Your Name"}
+            errorText="This field is required"
+            value={this.state.name}
+            onChange={this.handleChange}
+          /><br />
+          <div className="startButton">
+            <RaisedButton>
+              Start
+            </RaisedButton>
+          </div>
+          <div className="joinButton">
+            <RaisedButton>
+              Join test
+            </RaisedButton>
+          </div>
+         </div>
+      );
     }
 }
 
