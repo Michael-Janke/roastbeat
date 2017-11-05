@@ -15,7 +15,7 @@ class FirstScreenComponent extends Component {
       let data = JSON.parse(e.data);
       switch (data.command) {
         case "READ_PIN": props.addPin(data.pin); break;
-        case "READ_GAME_STATE": props.addGameState(data); break;
+        case "READ_GAME_STATE": props.addGameState(data); console.log(data);break;
         case "READ_ANSWER": props.addAnswer(data); break;
         default:
       }
@@ -65,7 +65,7 @@ class FirstScreenComponent extends Component {
         readyToPlay: true,
       });
       this.props.ws.send(JSON.stringify({
-        command: "CREATE_GAME",
+        command: "JOIN_GAME",
         name: this.state.name,
         pin: this.state.accessCode
       }));
