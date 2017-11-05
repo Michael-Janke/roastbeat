@@ -27,9 +27,6 @@ class PendingComponent extends Component {
           <span className="label">Waiting for participants</span>
           {state.participants.map((participant) => (
             <ListItem> {participant.name} </ListItem>
-        <List className="" subheader>
-          {state.players.map((player) => (
-            <ListItem> {player.name} </ListItem>
             ))}
           <div class="btn btn_joinThisQuiz"><span className="icon"><Add/></span>join this quiz</div>
         </List>
