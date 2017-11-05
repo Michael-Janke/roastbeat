@@ -39,6 +39,8 @@ function createGame(client) {
     }));
   	games[game.pin] = game;
   	console.log("your pin is:" + game.pin);
+
+  	broadcastGameState(game);
 }
 
 /*
@@ -139,5 +141,14 @@ function broadcastGameState(game) {
 			"question" : game.question,
 		}))
 	)
+	game.creator.send(JSON.stringify({
+			"command" : "READ_GAME_STATE",
+			"player" : game.players.map((player) => ({
+				"name": player.name, 
+				"score": player.score
+			})),
+			"state" : game.state,
+			"question" : game.question,
+		}));
 }
 

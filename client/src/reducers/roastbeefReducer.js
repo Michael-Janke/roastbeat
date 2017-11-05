@@ -15,7 +15,7 @@ const roastbeefReducer = (state = {}, action) => {
         ...state,
         players: action.data.player,
         state: action.data.state,
-        question: action.data.question
+        question: JSON.stringify(action.data)
       }; break;
       case 'SET_ANSWER':
       return {

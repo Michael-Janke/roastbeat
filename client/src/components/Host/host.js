@@ -4,6 +4,7 @@ import TextField from 'material-ui/TextField';
 import { setWS, setPin } from '../../actions';
 import { connect } from 'react-redux'
 import PendingComponent from '../Teilnehmer/PendingComponent/pendingComponent'
+import Sound from 'react-sound'
 
 let songs = ['Alan Walker - Faded.mp3',
   'Aqua - Barbie Girl.mp3',
@@ -39,6 +40,22 @@ let songs = ['Alan Walker - Faded.mp3',
   'Tina Turner - We Don\'t Need Another Hero.mp3',
   'Twenty One Pilots - Stressed Out.mp3',];
 
+let currentSong = 0;
+let nextSong = () => 'Aqua - Barbie Girl.mp3';
+let answers = () => [ 'Aqua - Barbie Girl.mp3',
+  'Bloodhoundgang - Foxtrot Uniform Charlie Kilo.mp3',
+  'Calvin Harris - This Is What You Came For.mp3',
+  'Cindy und Bert - Immer wieder Sonntags.mp3',]
+
+let getNextQuestion = function () {
+  let answers2 = answers();
+  return {
+    question: answers2[Math.round(Math.random()*4)],
+    answers: answers2
+  }
+}
+
+
 class HostComponent extends Component {
 
   constructor (props) {
@@ -71,15 +88,33 @@ class HostComponent extends Component {
     readyToPlay: false,
   };
 
+  onStartClicked() {
+    console.log(JSON.stringify({command: 'UPDATE_GAME', state: 'QUESTION', question: {song: 'test'}}));
+    this.props.ws.send(JSON.stringify({command: 'UPDATE_GAME', pin: this.props.pin, state: 'QUESTION', question: getNextQuestion()}));
+  }
+
+  getPath() {
+    return 'https://www.wolkenberg-gymnasium.de/stundenplan/mp3/Aqua - Barbie Girl.mp3';
+  }
+
   render() {
     const state = this.state;
 
       return (
         <div>
-          {this.props.pin && 
-            <PendingComponent />
+          <p>{JSON.stringify(this.props)}</p>
+          {this.props.state == "QUESTION" &&
+            <Sound url={this.getPath()} playStatus="PLAYING" />
           }
+        
+      {this.props.state == "LOBBY" &&
+         <div className="btn_bigFilled" onClick={this.onStartClicked.bind(this)}>
+          <div className="btn" >
+            start quiz
+          </div>
         </div>
+      }
+      </div>
       );
     }
 }
@@ -87,6 +122,9 @@ class HostComponent extends Component {
 const mapStateToProps = state => {
   return {
     pin: state.pin,
+    state: state.state,
+    question: state.question,
+    ws: state.ws
 
   }
 }
