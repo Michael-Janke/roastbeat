@@ -23,8 +23,7 @@ class GameComponent extends Component {
       'Brian',
       'Obama'
     ],
-    timer: 300,
-    completed: 0
+    timer: 30,
   };
 
   componentDidMount() {
@@ -42,16 +41,22 @@ class GameComponent extends Component {
     const state = this.state;
 
     return (
-      <div className="main-content">
+      <div>
         <div className="appNavigation">
           <div className="btn btn_closeQuiz"><span className="icon"><Close/></span>close quiz</div>
         </div> 
         {state.timer > 0 ?
           <div className="choiceGroup">
+<<<<<<< HEAD
             <span className="timer">{Math.floor(state.timer * 100 ) / 100}</span>
             <h3>
               {state.question}
             </h3>
+=======
+            <h2>
+              {JSON.stringify(this.props)}
+            </h2>
+>>>>>>> b08282a0d1ad1b43d210df1601f6b497d1a8f0b6
             <RadioButtonGroup className="choiceRadioGroup" name="choices">
 
               {state.choices.map((choice) => (
@@ -62,7 +67,9 @@ class GameComponent extends Component {
                 />
               ))}
             </RadioButtonGroup>
-            <div className="btn_bigFilled"><div className="btn">confirm</div></div>
+            <RaisedButton>
+              Confirm
+            </RaisedButton>
           </div>
           : null
         }
@@ -78,6 +85,7 @@ const mapStateToProps = state => {
   return {
     ws: state ? state.ws : null,
     pin: state ? state.pin: null,
+    question: state ? state.question: null,
   };
 };
 
