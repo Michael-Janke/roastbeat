@@ -13,10 +13,13 @@ wss.on('connection', function connection(ws) {
     	let messageObject = JSON.parse(message);
 	
 	    switch(messageObject.command) {
-	    	case "CREATE_GAME": createGame(ws);
-	    	break;
+	    	case "CREATE_GAME": createGame(ws); break;
+	    	case "JOIN_GAME": joinGame(ws); break;
+	    	case "START_GAME": startGame(ws); break;
+	    	case "STOP_GAME": stopGame(ws); break;
+	    	case "LEAVE_GAME": leaveGame(ws); break;
 	    	default:
-	    		console.log(messageObject.command + " command not defined")
+	    		throw(messageObject.command + " command not defined");
 	    }
   	} catch (e) {
   		ws.send(JSON.stringify({
@@ -27,6 +30,7 @@ wss.on('connection', function connection(ws) {
   });
 });
 
+//{"command":"CREATE_GAME"}
 function createGame(client) {
 	let game = new Game();
     client.send(JSON.stringify({
@@ -37,4 +41,3 @@ function createGame(client) {
   	console.log("your pin is:" + game.pin);
 }
 
-//{"command":"CREATE_GAME"}
