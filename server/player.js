@@ -1,6 +1,8 @@
 class Player {
-    constructor() {
-        this.name = undefined;
+    constructor(name, game, socket) {
+        this.name = name;
+        this.game = game;
+        this.socket = socket;
         this.score = 0;
     }
 }

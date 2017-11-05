@@ -7,6 +7,7 @@ class Game {
     constructor() {
         this.players = [];
         this.pin = generatePin();
+        this.state = "LOBBY";
     }
 }
 
