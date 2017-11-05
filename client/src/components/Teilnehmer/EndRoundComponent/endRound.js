@@ -4,11 +4,11 @@ import { connect } from 'react-redux'
 class EndRoundComponent extends Component {
 
   state = {
-    name: 'paul',
-    answerCorrect: false,
-    songTitle: 'Hey yah',
-    score: 0,
-    timer: 3,
+    name: 'Paul',
+    answerCorrect: true,
+    songTitle: 'Hello from the other side',
+    score: 15,
+    timer: 10,
   };
 
   componentDidMount() {
@@ -53,7 +53,7 @@ class EndRoundComponent extends Component {
             <span className="name">Time:</span>
           </li>
         </ul>
-        <div className="btn_big"><div className="btn" onClick={onEndClicked.bind(this)}>close quiz</div></div>
+        <div className="btn_big"><div className="btn" onClick={onEndClicked.bind(this)}>ready</div></div>
       </div>
     );
   }
