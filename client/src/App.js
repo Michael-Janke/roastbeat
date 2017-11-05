@@ -13,7 +13,13 @@ class App extends Component {
   }
 
   state = {
-    name: "Your Name"
+    name: '',
+    accessCode: '',
+    attendants: [],
+    songTitle: '',
+    playing: false,
+    pending: false,
+    done: false,
   };
 
   render() {
