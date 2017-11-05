@@ -1,6 +1,6 @@
 const roastbeefReducer = (state = {}, action) => {
     switch (action.type) {
-    case 'SET_GAME_STATE':
+    case 'SET_WS':
       return {
         ...state,
         
