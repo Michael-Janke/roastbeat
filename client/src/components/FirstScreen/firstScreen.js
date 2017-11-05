@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import { setWS, setPin } from '../../actions';
+import { setWS, setPin, setAnswer, setGameState } from '../../actions';
 import { connect } from 'react-redux'
 
 
@@ -15,6 +15,8 @@ class FirstScreenComponent extends Component {
       let data = JSON.parse(e.data);
       switch (data.command) {
         case "READ_PIN": props.addPin(data.pin); break;
+        case "READ_GAME_STATE": props.addGameState(data); break;
+        case "READ_ANSWER": props.addAnswer(data); break;
         default: ;
       }
     }
@@ -111,7 +113,13 @@ const mapDispatchToProps = dispatch => {
     },
     addPin: pin => {
       dispatch(setPin(pin))
-    }
+    },
+    addGameState: data => {
+      dispatch(setGameState(data))
+    },
+    addAnswer: data => {
+      dispatch(setAnswer(data))
+    },
   }
 };
 
