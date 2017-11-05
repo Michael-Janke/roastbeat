@@ -7,8 +7,8 @@ import {
 
 import PendingComponent from '../Teilnehmer/PendingComponent/pendingComponent';
 import ActionComponent from '../Teilnehmer/GameComponent/actionComponent';
-import FeedbackComponent from '../Teilnehmer/FeedbackComponent/feedbackComponent';
-import FinalScoreComponent from '../Teilnehmer/FinalScoreComponent/finalScoreComponent';
+import FeedbackComponent from '../Teilnehmer/EndRoundComponent/endRound';
+import FinalScoreComponent from '../Teilnehmer/EndGameComponent/endGame';
 import FirstScreen from "../FirstScreen/firstScreen";
 
 const BasicRouter = () => (

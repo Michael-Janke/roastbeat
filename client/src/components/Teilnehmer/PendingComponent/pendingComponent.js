@@ -5,7 +5,7 @@ import CheckboxOutlineBlank from 'material-ui-icons/CheckBoxOutlineBlank';
 class PendingComponent extends Component {
 
   state = {
-    participants: [{name: 'paul', status: 'ready'}, {name: 'micha', status: 'pending'}],
+    participants: [{name: 'paul'}, {name: 'micha'}],
   };
 
   renderParticipantStatus(status) {
@@ -20,14 +20,9 @@ class PendingComponent extends Component {
     return (
       <div className="App main-context">
         <List className="App" subheader>
-          <ListItem>
-            <Checkbox/>
-            Paul
-          </ListItem>
-          <ListItem>
-            <CheckboxOutlineBlank/>
-            Micha
-          </ListItem>
+          {state.participants.map((participant) => (
+            <ListItem> {participant.name} </ListItem>
+            ))}
         </List>
       </div>
     );
