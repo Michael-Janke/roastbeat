@@ -13,18 +13,14 @@ class App extends Component {
   }
 
   state = {
-    name: "defaultName"
+    name: "Your Name"
   };
 
   render() {
 
     return (
       <MuiThemeProvider>
-        <div className="App">
-          <p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-          </p>
-          aoh
+        <div className="App main-content">
           <FirstScreen state={this.state} />
         </div>
       </MuiThemeProvider>
