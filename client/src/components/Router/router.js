@@ -17,8 +17,8 @@ const BasicRouter = () => (
       <ul className="devNavi">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/pending">Pending</Link></li>
-        <li><Link to="/action">Action</Link></li>
-        <li><Link to="/feedback">Feedback</Link></li>
+        <li><Link to="/action">Game</Link></li>
+        <li><Link to="/feedback">Round Over</Link></li>
         <li><Link to="/finalScore">FinalScore</Link></li>
       </ul>
       

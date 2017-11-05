@@ -78,15 +78,17 @@ class FirstScreenComponent extends Component {
           <div className="btn_big"><div className="btn" onClick={onJoinClicked.bind(this)}>join quiz</div></div>
           <TextField
             hintText={"Your Name"}
-            errorText="This field is required"
             value={state.name}
             onChange={this.handleChange}
+            className="normalTextField"
+            style={{marginLeft: 100}}
           />
           <TextField
             hintText={this.props.pin != null? "Share Access Code: " + this.props.pin : "Enter game code"}
-            errorText="This field is required"
             value={state.accessCode}
             onChange={this.handleAccessCode}
+            className="normalTextField"
+            style={{marginLeft: 100}}
           />
          </div>
       );
