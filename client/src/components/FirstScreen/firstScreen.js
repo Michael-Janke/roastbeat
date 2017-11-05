@@ -62,6 +62,9 @@ class FirstScreenComponent extends Component {
       this.setState({
         readyToPlay: true,
       });
+      if(this.props.pin) {
+
+      }
       console.log(this.props.pin);
     }
 
@@ -112,7 +115,7 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-const FirstScreen = connect(mapStateToProps, mapDispatchToProps)(FirstScreenComponent)
+const FirstScreen = connect(mapStateToProps, mapDispatchToProps)(FirstScreenComponent);
 
 
 export default FirstScreen

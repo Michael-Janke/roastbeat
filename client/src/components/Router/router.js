@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom'
 
 import PendingComponent from '../Teilnehmer/PendingComponent/pendingComponent';
-import ActionComponent from '../Teilnehmer/GameComponent/actionComponent';
+import ActionComponent from '../Teilnehmer/GameComponent/gameComponent';
 import FeedbackComponent from '../Teilnehmer/EndRoundComponent/endRound';
 import FinalScoreComponent from '../Teilnehmer/EndGameComponent/endGame';
 import FirstScreen from "../FirstScreen/firstScreen";

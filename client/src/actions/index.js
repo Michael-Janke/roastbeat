@@ -10,4 +10,4 @@ export const setPin = pin => {
         type: "SET_PIN",
         pin
     }
-}
+};

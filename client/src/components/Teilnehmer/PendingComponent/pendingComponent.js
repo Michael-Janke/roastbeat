@@ -7,12 +7,6 @@ class PendingComponent extends Component {
     participants: [{name: 'paul'}, {name: 'micha'}],
   };
 
-  renderParticipantStatus(status) {
-    if(status==='ready')
-      return true;
-    return false;
-  }
-
   render() {
     const state = this.state;
 

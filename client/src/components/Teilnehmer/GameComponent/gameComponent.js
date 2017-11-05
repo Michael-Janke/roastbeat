@@ -4,6 +4,7 @@ import Checkbox from 'material-ui-icons/CheckBox';
 import CheckboxOutlineBlank from 'material-ui-icons/CheckBoxOutlineBlank';
 import RaisedButton from 'material-ui/RaisedButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import { connect } from 'react-redux'
 
 class GameComponent extends Component {
 
@@ -41,12 +42,15 @@ class GameComponent extends Component {
     return (
       <div className="main-content">
         {state.timer > 0 ?
-          <div>
-            {state.question}
-            <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
+          <div className="choiceGroup">
+            <h2>
+              {state.question}
+            </h2>
+            <RadioButtonGroup className="choiceRadioGroup" name="choices">
 
               {state.choices.map((choice) => (
                 <RadioButton
+                  key={choice}
                   value={choice}
                   label={choice}
                 />
@@ -68,4 +72,18 @@ class GameComponent extends Component {
   }
 }
 
-export default GameComponent;
+
+const mapStateToProps = state => {
+  return {
+    ws: state ? state.ws : null,
+    pin: state ? state.pin: null,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+const Game = connect(mapStateToProps, mapDispatchToProps)(GameComponent);
+
+export default Game;

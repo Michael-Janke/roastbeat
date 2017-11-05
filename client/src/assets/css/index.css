@@ -47,3 +47,12 @@ body:before {
   margin: 1%;
   margin-bottom: 2%;
 }
+
+.choiceGroup {
+  margin: 2% 35% 2% 35%;
+}
+
+.choiceRadioGroup {
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
