@@ -10,10 +10,11 @@ class App extends Component {
 
   constructor() {
     super();
-    this.state = {
-      name: "defaultName"
-    }
   }
+
+  state = {
+    name: "defaultName"
+  };
 
   render() {
 
@@ -24,7 +25,7 @@ class App extends Component {
             To get started, edit <code>src/App.js</code> and save to reload.
           </p>
           aoh
-          <FirstScreen state={this.state.name} />
+          <FirstScreen state={this.state} />
         </div>
       </MuiThemeProvider>
     );

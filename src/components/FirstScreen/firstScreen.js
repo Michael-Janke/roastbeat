@@ -9,9 +9,11 @@ class FirstScreen extends Component {
         return (
           <div>
             <div>
-              Test {state.name}
+              {state.name}
+            </div>
+            <div>
               <RaisedButton>
-                Start {state.name}
+                Start
               </RaisedButton>
             </div>
             <div>
