@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import { setWS } from '../../actions';
+import { connect } from 'react-redux'
 
 
-class FirstScreen extends Component {
+class FirstScreenComponent extends Component {
+
+  constructor (props) {
+    super();
+    // eslint-disable-next-line no-alert
+    let ws = new WebSocket("ws://" + window.location.host + "/socket");
+    ws.onmessage = function(e) {
+      console.log(e.data);
+    }
+    props.addWS(ws);
+  }
 
   handleChange = (event) => {
     this.setState({
@@ -39,6 +51,7 @@ class FirstScreen extends Component {
         isHost: true,
         openGame: true,
       });
+      this.props.ws.send('{"command":"CREATE_GAME"}');
     }
 
     function onJoinClicked() {
@@ -56,7 +69,7 @@ class FirstScreen extends Component {
             onChange={this.handleChange}
           /><br />
           <div className="startButton">
-            <RaisedButton onclick={onStartClicked.bind(this)}>
+            <RaisedButton onClick={onStartClicked.bind(this)}>
               Host Game
             </RaisedButton>
           </div>
@@ -67,7 +80,7 @@ class FirstScreen extends Component {
             onChange={this.handleAccessCode}
           /><br />
           <div className="joinButton">
-            <RaisedButton onclick={onJoinClicked.bind(this)}>
+            <RaisedButton onClick={onJoinClicked.bind(this)}>
               Join
             </RaisedButton>
           </div>
@@ -76,4 +89,21 @@ class FirstScreen extends Component {
     }
 }
 
-export default FirstScreen;
+const mapStateToProps = state => {
+  return {
+    ws: state ? state.ws : null
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addWS: ws => {
+      dispatch(setWS(ws))
+    }
+  }
+}
+
+const FirstScreen = connect(mapStateToProps, mapDispatchToProps)(FirstScreenComponent)
+
+
+export default FirstScreen
