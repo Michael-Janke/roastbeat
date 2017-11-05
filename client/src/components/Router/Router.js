@@ -5,23 +5,32 @@ import {
   Link
 } from 'react-router-dom'
 
+import PendingComponent from '../Teilnehmer/PendingComponent/pendingComponent';
+import ActionComponent from '../Teilnehmer/ActionComponent/actionComponent';
+import FeedbackComponent from '../Teilnehmer/FeedbackComponent/feedbackComponent';
+import FinalScoreComponent from '../Teilnehmer/FinalScoreComponent/finalScoreComponent';
+import FirstScreen from "../FirstScreen/firstScreen";
 
-const BasicExample = () => (
+const BasicRouter = () => (
   <Router>
     <div>
       <ul>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/topics">Topics</Link></li>
+        <li><Link to="/pending">Pending</Link></li>
+        <li><Link to="/action">Action</Link></li>
+        <li><Link to="/feedback">Feedback</Link></li>
+        <li><Link to="/finalScore">FinalScore</Link></li>
       </ul>
 
       <hr/>
 
-      <Route exact path="/" component={Home}/>
-      <Route path="/about" component={About}/>
-      <Route path="/topics" component={Topics}/>
+      <Route exact path="/" component={FirstScreen}/>
+      <Route path="/pending" component={PendingComponent}/>
+      <Route path="/action" component={ActionComponent}/>
+      <Route path="/feedback" component={FeedbackComponent}/>
+      <Route path="/finalScore" component={FinalScoreComponent}/>
     </div>
   </Router>
 );
 
-export default BasicExample
+export default BasicRouter;

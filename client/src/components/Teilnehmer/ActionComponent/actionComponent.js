@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class ActionComponent extends Component {
 
   render() {
-    return "";
+    return "action";
   }
 }
 

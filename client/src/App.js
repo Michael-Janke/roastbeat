@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom'
 import { withStyles, MuiThemeProvider } from 'material-ui/styles';
-import RaisedButton from 'material-ui/RaisedButton';
-import logo from './logo.svg';
+import BasicRouter from './components/Router/Router';
 import './App.css';
 import FirstScreen from "./components/FirstScreen/firstScreen";
 
@@ -26,9 +26,9 @@ class App extends Component {
 
     return (
       <MuiThemeProvider>
-        <div className="App main-content">
-          <FirstScreen state={this.state} />
-        </div>
+        <BrowserRouter>
+          <BasicRouter/>
+        </BrowserRouter>
       </MuiThemeProvider>
     );
   }

@@ -11,15 +11,27 @@ class FirstScreen extends Component {
     });
   };
 
-  state = this.props.state;
+
+  state = {
+    name: '',
+    accessCode: '',
+    attendants: [],
+    songTitle: '',
+    startGame: false,
+    openGame: false,
+    endRound: false,
+    endGame: false,
+  };
 
   render() {
+    const state = this.state;
+
       return (
         <div>
           <TextField
             hintText={"Your Name"}
             errorText="This field is required"
-            value={this.state.name}
+            value={state.name}
             onChange={this.handleChange}
           /><br />
           <div className="startButton">
