@@ -18,8 +18,8 @@ class PendingComponent extends Component {
     const state = this.state;
 
     return (
-      <div className="App main-context">
-        <List className="App" subheader>
+      <div className="main-content">
+        <List className="" subheader>
           {state.participants.map((participant) => (
             <ListItem> {participant.name} </ListItem>
             ))}

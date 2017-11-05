@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import List, { ListItem, ListItemIcon, ListItemText, ListSubheader } from 'material-ui/List';
-import Checkbox from 'material-ui-icons/CheckBox';
-import CheckboxOutlineBlank from 'material-ui-icons/CheckBoxOutlineBlank';
 
 class FinalScoreComponent extends Component {
 
@@ -19,7 +17,7 @@ class FinalScoreComponent extends Component {
     const state = this.state;
 
     return (
-    <div>
+    <div className="main-content">
       Scoreboard
       <List>
 
