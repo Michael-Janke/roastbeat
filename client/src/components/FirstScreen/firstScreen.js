@@ -64,10 +64,12 @@ class FirstScreenComponent extends Component {
       this.setState({
         readyToPlay: true,
       });
-      if(this.props.pin) {
-
-      }
-      console.log(this.props.pin);
+      this.props.ws.send(JSON.stringify({
+        command: "CREATE_GAME",
+        name: this.state.name,
+        pin: this.state.accessCode
+      }));
+      
     }
 
       return (
