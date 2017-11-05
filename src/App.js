@@ -20,7 +20,7 @@ class App extends Component {
 
     return (
       <MuiThemeProvider>
-        <div className="App">
+        <div className="App main-content">
           <FirstScreen state={this.state} />
         </div>
       </MuiThemeProvider>

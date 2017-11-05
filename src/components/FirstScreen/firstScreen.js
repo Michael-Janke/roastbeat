@@ -11,13 +11,14 @@ class FirstScreen extends Component {
           <div>
             <TextField
               hintText={state.name}
+              errorText="This field is required"
             /><br />
-            <div>
+            <div className="startButton">
               <RaisedButton>
                 Start
               </RaisedButton>
             </div>
-            <div>
+            <div className="joinButton">
               <RaisedButton>
                 Join
               </RaisedButton>
